@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="content"
+
+    >
+    <h2
+      style="font-size: 1.5em;
+      font-weight: bold;"
+    ><span class="fas fa-lock" aria-hidden="true"></span> Login Sistema Matrícula </h2>
+
+      <app-text-form-field
+        [id]="'1'"
+        [type]="'email'"
+        [label]="'Usuário:'"
+        [placeholder]="''">
+      </app-text-form-field>
+
+      <app-text-form-field
+        [id]="'2'"
+        [type]="'password'"
+        [label]="'Senha:'"
+        [placeholder]="''">
+      </app-text-form-field>
+
+      <div class="btn-access">
+        <app-elevated-button
+          [classCss]="'primary'"
+          [text]="'Acessar'">
+        </app-elevated-button>
+      </div>
+
+    <div class="link">
+      <app-link
+        [text]="'Esqueceu ou deseja alterar sua senha?'">
+      </app-link>
+    </div>
+  </div>
+</div>
