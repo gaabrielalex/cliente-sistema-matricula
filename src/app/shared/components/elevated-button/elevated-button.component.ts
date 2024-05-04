@@ -9,6 +9,7 @@ export class ElevatedButtonComponent implements OnInit {
   //Define se o button é primary(azul), secondary(cinza), success(verde), danger(vermelho), etc
   @Input() classCss: any;
   @Input() text: any;
+  @Input() onClick = () => {};
 
   constructor() { }
 

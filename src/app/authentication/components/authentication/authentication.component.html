@@ -1,7 +1,5 @@
 <div class="container">
-  <div class="content"
-
-    >
+  <div class="content">
     <h2
       style="font-size: 1.5em;
       font-weight: bold;"
@@ -24,7 +22,8 @@
       <div class="btn-access">
         <app-elevated-button
           [classCss]="'primary'"
-          [text]="'Acessar'">
+          [text]="'Acessar'"
+          (click)="onLogin()">
         </app-elevated-button>
       </div>
 
