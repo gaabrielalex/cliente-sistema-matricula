@@ -4,18 +4,21 @@ import { CommonModule } from '@angular/common';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { SharedModule } from '../shared';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AuthenticationComponent,
+
   ],
   imports: [
     CommonModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
-    AuthenticationComponent
+    AuthenticationComponent,
   ],
   providers: [
     AuthenticationService
