@@ -5,25 +5,15 @@
       font-weight: bold;"
     ><span class="fas fa-lock" aria-hidden="true"></span> Login Sistema Matrícula </h2>
 
-      <app-text-form-field
-        [ngModel]= "email"
-        [id]="'1'"
-        [type]="'email'"
-        [label]="'Email:'"
-        [placeholder]="''">
-      </app-text-form-field>
-
       <div class="form-group">
         <label for="Email">Email:</label>
         <input type="email" class="form-control" id="Email" placeholder="Digite seu email" [(ngModel)]="email">
       </div>
 
-      <app-text-form-field
-        [id]="'2'"
-        [type]="'password'"
-        [label]="'Senha:'"
-        [placeholder]="''">
-      </app-text-form-field>
+      <div class="form-group">
+        <label for="Senha">Senha:</label>
+        <input type="password" class="form-control" id="Senha" placeholder="Digite sua senha" [(ngModel)]="password">
+      </div>
 
       <div class="btn-access">
         <app-elevated-button

@@ -9,6 +9,7 @@ import { Console } from 'console';
 })
 export class AuthenticationComponent implements OnInit {
   @Input() email: any;
+  @Input() password: any;
 
   constructor(private authenticationService: AuthenticationService) {
 
@@ -18,7 +19,6 @@ export class AuthenticationComponent implements OnInit {
   }
 
   onLogin(){
-    alert(this.email);
     this.authenticationService.login(this.email);
   }
 }
