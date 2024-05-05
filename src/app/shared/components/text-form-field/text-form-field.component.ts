@@ -10,8 +10,10 @@ export class TextFormFieldComponent implements OnInit {
   @Input() type: any;
   @Input() label: any;
   @Input() placeholder: any;
+  @Input() ngModel: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
