@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  favicon: 'favicon.ico'
+  favicon: 'favicon.ico',
+  apiUrl: 'http://localhost:9020',
 };
 
 /*
