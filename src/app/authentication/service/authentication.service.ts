@@ -9,7 +9,7 @@ export class AuthenticationService {
 
   }
 
-  login(email: string){
-    alert('You are logged in as ' + email);
+  login(email: string, password: string){
+
   }
 }

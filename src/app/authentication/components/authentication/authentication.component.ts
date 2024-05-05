@@ -19,6 +19,6 @@ export class AuthenticationComponent implements OnInit {
   }
 
   onLogin(){
-    this.authenticationService.login(this.email);
+    this.authenticationService.login(this.email, this.password);
   }
 }
