@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Console } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,10 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) { }
 
   login(email: string, password: string){
-    this.httpClient.post(this.apiUrl + '/login', {email: email, password: password}).subscribe((response: any) => {
-      this.acess_token = response.acess_token;
-      console.log(this.acess_token);
-    });
+    return this.httpClient.post(
+      this.apiUrl + '/login',
+      {email: email, password: password},
+      {headers: new HttpHeaders().set('Content-Type', 'application/json')}
+    );
   }
 }
