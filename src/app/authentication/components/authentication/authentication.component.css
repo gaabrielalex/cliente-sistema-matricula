@@ -57,3 +57,14 @@ h2 .fas {
   justify-content: end;
   align-items: center;
 }
+
+label {
+  font-size: 13px;
+  font-weight: normal !important;
+  color: #666666;
+}
+
+input {
+  height: 40px;
+}
+

@@ -6,11 +6,17 @@
     ><span class="fas fa-lock" aria-hidden="true"></span> Login Sistema Matrícula </h2>
 
       <app-text-form-field
+        [ngModel]= "email"
         [id]="'1'"
         [type]="'email'"
-        [label]="'Usuário:'"
+        [label]="'Email:'"
         [placeholder]="''">
       </app-text-form-field>
+
+      <div class="form-group">
+        <label for="Email">Email:</label>
+        <input type="email" class="form-control" id="Email" placeholder="Digite seu email" [(ngModel)]="email">
+      </div>
 
       <app-text-form-field
         [id]="'2'"
