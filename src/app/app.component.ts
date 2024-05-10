@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FaviconService } from './shared/service/favicon-service/favicon.service';
+import { FaviconService } from './shared/services/favicon-service/favicon.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
