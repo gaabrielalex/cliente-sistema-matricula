@@ -4,6 +4,7 @@ import { TextFormFieldComponent } from './components/text-form-field/text-form-f
 import { ElevatedButtonComponent } from './components/elevated-button/elevated-button.component';
 import { LinkComponent } from './components/link/link.component';
 import { FormsModule } from '@angular/forms';
+import { SnackBarService } from './services/snackbar-service/snack-bar.service';
 @NgModule({
   declarations: [
     TextFormFieldComponent,
@@ -17,7 +18,10 @@ import { FormsModule } from '@angular/forms';
   exports: [
     TextFormFieldComponent,
     ElevatedButtonComponent,
-    LinkComponent
+    LinkComponent,
+  ], 
+  providers: [
+    SnackBarService
   ]
 })
 export class SharedModule { }

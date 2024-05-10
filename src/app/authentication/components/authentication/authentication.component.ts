@@ -4,6 +4,8 @@ import { Console } from 'console';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackBarService } from 'src/app/shared/services/snackbar-service/snack-bar.service';
 
 @Component({
   selector: 'app-authentication',
@@ -21,8 +23,8 @@ export class AuthenticationComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AuthenticationComponent>,
-    // private ngxSerivce: NgxUiLoaderService,
-    // private snackBarService: SnackBarService
+    private ngxSerivce: NgxUiLoaderService,
+    private snackBarService: SnackBarService
   ) {
 
   }
