@@ -8,6 +8,21 @@ import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
+
+const NgxUiLoaderConfig: NgxUiLoaderConfig = {
+  text: 'Loading...',
+  textColor: "#FFFFFF",
+  textPosition: "center-center",
+  pbColor: "red",
+  bgsColor: "red",
+  fgsColor: "red",
+  fgsType: SPINNER.ballSpinClockwise,
+  fgsSize: 100,
+  pbDirection: PB_DIRECTION.leftToRight,
+  pbThickness: 5,
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +36,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
+    NgxUiLoaderModule.forRoot(NgxUiLoaderConfig),
   ],
   providers: [
     {
