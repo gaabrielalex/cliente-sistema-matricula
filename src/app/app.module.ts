@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
+import { SnackbarService } from './shared/services/snackbar-service.service';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -37,12 +38,14 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     ReactiveFormsModule,
     MatDialogModule,
     NgxUiLoaderModule.forRoot(NgxUiLoaderConfig),
+    SharedModule
   ],
   providers: [
     {
       provide: MatDialogRef,
       useValue: {}
     },
+    SnackbarService
   ],
   bootstrap: [AppComponent]
 })
