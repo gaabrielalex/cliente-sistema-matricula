@@ -7,6 +7,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app.routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './app.routing.module';
     FormsModule,
     HomeModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
