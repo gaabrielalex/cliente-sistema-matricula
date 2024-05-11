@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { HomeService } from './services/home.service';
+import { MaterialModule } from '../shared/material.module';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { HomeService } from './services/home.service';
   ],
   imports: [
     CommonModule,
+    MaterialModule
   ],
   exports: [
     HomeComponent
