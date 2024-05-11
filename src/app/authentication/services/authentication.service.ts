@@ -20,4 +20,11 @@ export class AuthenticationService {
       {headers: new HttpHeaders().set('Content-Type', 'application/json')}
     );
   }
+
+  isLoggedIn(){
+    if(localStorage.getItem('Token') != null){
+      return true;
+    }
+    return false;
+  }
 }
