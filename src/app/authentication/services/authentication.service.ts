@@ -13,10 +13,10 @@ export class AuthenticationService {
   //Já sabe que o erro é aqui nesse HttpClient, na hora que faço o uso dele da erro
   constructor(private httpClient: HttpClient) { }
 
-  login(email: string, password: string){
+  login(email: string, senha: string){
     return this.httpClient.post(
       this.apiUrl + '/login',
-      {email: email, password: password},
+      {email: email, senha: senha},
       {headers: new HttpHeaders().set('Content-Type', 'application/json')}
     );
   }
