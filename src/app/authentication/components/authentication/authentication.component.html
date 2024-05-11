@@ -1,4 +1,6 @@
-<div class="container">
+<!-- Estrutura antiga da página em html e css puro -->
+
+<!-- <div class="container">
   <div class="content">
     <h2
       style="font-size: 1.5em;
@@ -29,4 +31,39 @@
       </app-link>
     </div>
   </div>
-</div>
+</div> -->
+
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="loginForm">
+    <div fxFlex  fxFalyout="collum">
+      <mat-form-field appearance="fill" fxflex>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+          <span *ngIf="loginForm.controls.email.errors?.required">Campo obrigatório</span>
+          <span *ngIf="loginForm.controls.email.errors?.pattern">Email inválido</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxflex>
+        <mat-label>Senha</mat-label>
+        <input matInput formControlName="password" required>
+        <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+          <span *ngIf="loginForm.controls.password.errors?.required">Campo obrigatório</span>
+          <span *ngIf="loginForm.controls.password.errors?.minlength">Senha deve ter no mínimo 6 caracteres</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="handledSubmitLogin()"
+      [disabled]="(!loginForm.valid && loginForm.dirty)">Login</button>
+
+</mat-dialog-actions>

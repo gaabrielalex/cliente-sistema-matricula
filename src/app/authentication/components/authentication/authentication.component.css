@@ -3,6 +3,7 @@
   --dimension-desktop1: 1150px;
 } */
 
+/*
 @media (max-width: 768px) {
   .content {
     width: calc(100vw - 100px);
@@ -68,3 +69,4 @@ input {
   height: 40px;
 }
 
+*/
