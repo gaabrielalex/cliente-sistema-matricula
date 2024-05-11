@@ -4,6 +4,7 @@ import { TextFormFieldComponent } from './components/text-form-field/text-form-f
 import { ElevatedButtonComponent } from './components/elevated-button/elevated-button.component';
 import { LinkComponent } from './components/link/link.component';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     TextFormFieldComponent,
@@ -11,8 +12,9 @@ import { FormsModule } from '@angular/forms';
     LinkComponent,
   ],
   imports: [
+    MatSnackBarModule,
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     TextFormFieldComponent,
@@ -20,7 +22,6 @@ import { FormsModule } from '@angular/forms';
     LinkComponent
   ],
   providers: [
-    
   ]
 })
 export class SharedModule { }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -37,7 +38,8 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     ReactiveFormsModule,
     MatDialogModule,
     NgxUiLoaderModule.forRoot(NgxUiLoaderConfig),
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

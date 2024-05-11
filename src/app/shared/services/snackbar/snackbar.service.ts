@@ -4,9 +4,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
-export class SnackbarServiceService {
+export class SnackbarService {
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(
+    private snackBar: MatSnackBar
+  ) { }
 
   openSnackBar(message: string, action: string) {
     if (action === "error") {
