@@ -3,8 +3,10 @@
   --dimension-desktop1: 1150px;
 } */
 
-/*
-@media (max-width: 768px) {
+
+/*CSS ANTIGO*/
+
+ @media (max-width: 768px) {
   .content {
     width: calc(100vw - 100px);
   }
@@ -49,24 +51,5 @@ h2 .fas {
 }
 
 .btn-access {
-  margin-top: 20px;
-}
-
-.link {
   margin-top: 10px;
-  display: flex;
-  justify-content: end;
-  align-items: center;
 }
-
-label {
-  font-size: 13px;
-  font-weight: normal !important;
-  color: #666666;
-}
-
-input {
-  height: 40px;
-}
-
-*/
