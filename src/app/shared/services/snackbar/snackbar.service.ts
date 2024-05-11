@@ -16,7 +16,7 @@ export class SnackbarService {
         horizontalPosition: 'center',
         verticalPosition: 'top',
         duration: 2000,
-        panelClass: ['blacl-snackbar']
+        panelClass: ['red-snackbar']
       });
     }
     else {
