@@ -11,6 +11,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
+import { DefaultLayoutModule } from './default-layout/default-layout.module';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -33,6 +34,7 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     BrowserModule,
     SharedModule,
     AuthenticationModule,
+    DefaultLayoutModule,
     FormsModule,
     HomeModule,
     AppRoutingModule,
