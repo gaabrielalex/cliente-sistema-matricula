@@ -4,6 +4,7 @@ import { DefaultLayoutComponent } from './components/default-layout/default-layo
 import { DefaultLayoutService } from './services/default-layout.service';
 import { MaterialModule } from '../shared/material.module';
 import { RouterModule } from '@angular/router';
+import { AuthenticationService } from '../authentication';
 
 
 
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     DefaultLayoutService,
+    AuthenticationService,
   ]
 })
 export class DefaultLayoutModule { }
