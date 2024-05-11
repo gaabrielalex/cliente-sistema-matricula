@@ -6,17 +6,19 @@ import { AuthGuard } from './shared/services/auth-guard/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: '',
-    component: AuthenticationComponent
-  },
-  {
     path: 'login',
     component: AuthenticationComponent
   },
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent
+      }
+    ]
   },
   {
     path: '**',
