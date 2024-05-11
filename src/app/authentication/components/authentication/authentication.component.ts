@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
-import { Console } from 'console';
+import { Console, error } from 'console';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { SnackBarService } from 'src/app/shared/services/snackbar-service/snack-bar.service';
+import { GlobalConstants } from 'src/app/shared/global-constants';
+import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-authentication',
@@ -15,8 +16,6 @@ import { SnackBarService } from 'src/app/shared/services/snackbar-service/snack-
 export class AuthenticationComponent implements OnInit {
   loginForm: any = FormGroup;
   responseMessage: any;
-  @Input() email: any;
-  @Input() password: any;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -24,15 +23,40 @@ export class AuthenticationComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AuthenticationComponent>,
     private ngxSerivce: NgxUiLoaderService,
-    private snackBarService: SnackBarService
+    private snackBarService: SnackbarService
   ) {
 
   }
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.pattern(GlobalConstants.EmailRegex)]],
+      password: [null, [Validators.required, Validators.minLength(6)]]
+    });
   }
 
-  onLogin(){
-    this.authenticationService.login(this.email, this.password);
+  handledSubmitLogin(){
+    var formData = this.loginForm.value;
+    if(formData.email == null || formData.password == null){
+      this.snackBarService.openSnackBar("Nenhum dos campos podem estar vazios, por favor, os preencha para prosseguir com a Autenticação", GlobalConstants.error);
+      return;
+    }
+
+    this.ngxSerivce.start();
+
+    this.authenticationService.login(formData.email, formData.password).subscribe((response: any) => {
+      this.ngxSerivce.stop();
+      localStorage.setItem('Token', response.acessToken);
+      this.router.navigate(['/home']);
+      this.snackBarService.openSnackBar("Login efetuado com sucesso", GlobalConstants.success);
+    },(error) => {
+      this.ngxSerivce.stop();
+      if(error.error?.error != null){
+        this.responseMessage = error.error.error;
+      } else {
+        this.responseMessage = GlobalConstants.GenereicErrorMessage;
+      }
+      this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+    })
   }
 }
