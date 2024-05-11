@@ -8,7 +8,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SnackbarService } from '../shared/services/snackbar.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { SnackbarService } from '../shared/services/snackbar.service';
   ],
   providers: [
     AuthenticationService,
-    SnackbarService
   ]
 })
 export class AuthenticationModule { }
