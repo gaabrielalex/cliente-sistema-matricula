@@ -54,7 +54,7 @@
       <button routerLink="" mat-button><mat-icon>group</mat-icon> Usuários </button>
     </mat-list-item>
     <mat-list-item>
-      <button routerLink="" mat-button><mat-icon>logout</mat-icon> Sair </button>
+      <button routerLink="" mat-button (click)="logout()"><mat-icon>logout</mat-icon> Sair </button>
     </mat-list-item>
   </mat-nav-list>
 
@@ -67,7 +67,7 @@
       <button routerLink="" mat-button><mat-icon>description</mat-icon> Matrículas(Avaliações)</button>
   </mat-list-item>
   <mat-list-item>
-    <button routerLink="" mat-button><mat-icon>logout</mat-icon> Sair </button>
+    <button routerLink="" mat-button><mat-icon (click)="logout()">logout</mat-icon> Sair </button>
   </mat-list-item>
   </mat-nav-list>
 
@@ -80,7 +80,7 @@
       <button routerLink="" mat-button><mat-icon>description</mat-icon> Matrículas</button>
   </mat-list-item>
   <mat-list-item>
-    <button routerLink="" mat-button><mat-icon>logout</mat-icon> Sair </button>
+    <button routerLink="" mat-button><mat-icon (click)="logout()">logout</mat-icon> Sair </button>
   </mat-list-item>
   </mat-nav-list>
   </mat-drawer>
