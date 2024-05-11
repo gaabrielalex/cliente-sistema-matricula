@@ -47,6 +47,7 @@ export class AuthenticationComponent implements OnInit {
     this.authenticationService.login(formData.email, formData.password).subscribe((response: any) => {
       this.ngxSerivce.stop();
       localStorage.setItem('Token', response.acessToken);
+      localStorage.setItem('User', JSON.stringify(response.user));
       this.router.navigate(['/home']);
       this.snackBarService.openSnackBar("Login efetuado com sucesso", GlobalConstants.success);
     },(error) => {
