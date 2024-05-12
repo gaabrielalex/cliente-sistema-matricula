@@ -5,11 +5,13 @@ import { ElevatedButtonComponent } from './components/elevated-button/elevated-b
 import { LinkComponent } from './components/link/link.component';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TitleComponent } from './components/title/title.component';
 @NgModule({
   declarations: [
     TextFormFieldComponent,
     ElevatedButtonComponent,
     LinkComponent,
+    TitleComponent,
   ],
   imports: [
     MatSnackBarModule,
@@ -19,7 +21,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   exports: [
     TextFormFieldComponent,
     ElevatedButtonComponent,
-    LinkComponent
+    LinkComponent,
+    TitleComponent,
   ],
   providers: [
   ]
