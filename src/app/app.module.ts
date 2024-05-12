@@ -32,6 +32,7 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     AppComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     SharedModule,
     AuthenticationModule,
@@ -39,13 +40,12 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     UserModule,
     FormsModule,
     HomeModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
     NgxUiLoaderModule.forRoot(NgxUiLoaderConfig),
     SharedModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [
     {
