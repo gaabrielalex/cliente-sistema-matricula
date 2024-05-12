@@ -1,5 +1,4 @@
 .container {
-  margin-top: 20px;
   width: 90vw;
 }
 
@@ -7,4 +6,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.float-right {
+  float: right;
+}
+
+mat-card {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
 }
