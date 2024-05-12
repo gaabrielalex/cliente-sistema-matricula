@@ -17,7 +17,10 @@ export class AdminGuardService {
   canActivate (
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (localStorage.getItem('tipo') === 'A') {
+    const usuarioString = localStorage.getItem('User');
+    const usuario = JSON.parse(usuarioString || '{}');
+
+    if (usuario.tipo === 'A') {
       return true;
     }
     this.snackBarService.openSnackBar('Você precisa ser usuário do tipo adminstrador para acessar esta página', GlobalConstants.error);
