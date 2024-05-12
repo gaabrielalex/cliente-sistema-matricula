@@ -12,7 +12,7 @@ import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { DefaultLayoutModule } from './default-layout/default-layout.module';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './user/user.module';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -36,7 +36,7 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     SharedModule,
     AuthenticationModule,
     DefaultLayoutModule,
-    UsersModule,
+    UserModule,
     FormsModule,
     HomeModule,
     AppRoutingModule,
