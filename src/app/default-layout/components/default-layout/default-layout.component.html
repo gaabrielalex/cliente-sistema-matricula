@@ -44,14 +44,14 @@
 
   <!-- Drawer caso o usuario seja adminsitrador -->
   <mat-nav-list *ngIf="tipoUsuario === 'A'">
-      <mat-list-item>
+      <mat-list-item routerLink="/home">
           <button routerLink="/home" mat-button><mat-icon>home</mat-icon> Home</button>
       </mat-list-item>
       <mat-list-item>
         <button routerLink="" mat-button><mat-icon>assignment</mat-icon> Editais</button>
     </mat-list-item>
-    <mat-list-item>
-      <button routerLink="" mat-button><mat-icon>group</mat-icon> Usuários </button>
+    <mat-list-item routerLink="/user">
+      <button mat-button><mat-icon>group</mat-icon> Usuários </button>
     </mat-list-item>
     <mat-list-item (click)="logout()">
       <button routerLink="" mat-button><mat-icon>logout</mat-icon> Sair </button>
@@ -60,7 +60,7 @@
 
   <!-- Drawer caso o usuario seja avaliador -->
   <mat-nav-list *ngIf="tipoUsuario === 'V'">
-    <mat-list-item>
+    <mat-list-item routerLink="/home">
         <button routerLink="/home" mat-button><mat-icon>home</mat-icon> Home</button>
     </mat-list-item>
     <mat-list-item>
@@ -73,8 +73,8 @@
 
   <!-- Drawer caso o usuario seja aluno -->
   <mat-nav-list *ngIf="tipoUsuario === 'L'">
-    <mat-list-item>
-        <button routerLink="/home" mat-button><mat-icon>home</mat-icon> Home</button>
+    <mat-list-item routerLink="/home">
+        <button mat-button><mat-icon>home</mat-icon> Home</button>
     </mat-list-item>
     <mat-list-item>
       <button routerLink="" mat-button><mat-icon>description</mat-icon> Matrículas</button>
