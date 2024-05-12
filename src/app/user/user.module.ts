@@ -4,16 +4,19 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './components/user/user.component';
 import { UserService } from './services/user.service';
-
+import { TitleComponent } from '../shared/components/title/title.component';
+import { SharedModule } from '../shared';
 
 @NgModule({
   declarations: [
-    UserComponent
+    UserComponent,
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
-  ], exports:[
+    UserRoutingModule,
+    SharedModule,
+  ],
+  exports:[
     UserComponent
   ],
   providers: [
