@@ -4,6 +4,7 @@ import {HomeComponent} from './home/components/home/home.component';
 import { AuthenticationComponent } from './authentication/components/authentication/authentication.component';
 import { AuthGuard } from './shared/services/auth-guard/auth-guard.service';
 import { DefaultLayoutComponent } from './default-layout/components/default-layout/default-layout.component';
+import { AdminGuardService } from './shared/services/admin-guard/admin-guard.service';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'user',
+        canActivate: [AdminGuardService],
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
       },
       {
