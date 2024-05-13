@@ -28,7 +28,6 @@ export class UserService {
   //   );
   // }
 
-  //TESTAR TUDO
   getUsers(){
     return this.httpClient.get(
       this.apiUrl + '/users',
