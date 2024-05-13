@@ -7,6 +7,7 @@ import { UserService } from './services/user.service';
 import { TitleComponent } from '../shared/components/title/title.component';
 import { SharedModule } from '../shared';
 import { MaterialModule } from '../shared/material.module';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MaterialModule } from '../shared/material.module';
     CommonModule,
     UserRoutingModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    MatTableModule
   ],
   exports:[
     UserComponent

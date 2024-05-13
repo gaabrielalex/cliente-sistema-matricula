@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { DefaultLayoutModule } from './default-layout/default-layout.module';
 import { UserModule } from './user/user.module';
+import { MatTableModule } from '@angular/material/table';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -46,6 +47,7 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     SharedModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatTableModule,
   ],
   providers: [
     {
