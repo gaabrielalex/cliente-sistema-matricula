@@ -8,10 +8,12 @@ import { TitleComponent } from '../shared/components/title/title.component';
 import { SharedModule } from '../shared';
 import { MaterialModule } from '../shared/material.module';
 import { MatTableModule } from '@angular/material/table';
+import { DialogAddEditComponent } from './components/dialog-add-edit/dialog-add-edit.component';
 
 @NgModule({
   declarations: [
     UserComponent,
+    DialogAddEditComponent,
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule
   ],
   exports:[
-    UserComponent
+    UserComponent,
+    DialogAddEditComponent
   ],
   providers: [
     UserService
