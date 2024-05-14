@@ -10,6 +10,7 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
 import { CdkTableModule} from '@angular/cdk/table';
 import {DataSource} from '@angular/cdk/table';
 import { DialogAddEditComponent } from '../dialog-add-edit/dialog-add-edit.component';
+import { DialogConfirmartionComponent } from 'src/app/shared/components/dialog-confirmartion/dialog-confirmartion.component';
 
 @Component({
   selector: 'app-user',
@@ -39,7 +40,7 @@ export class UserComponent implements OnInit {
   }
 
   tableData(){
-    this.userService.getUsers().subscribe((response: any) => {
+    this.userService.get().subscribe((response: any) => {
       this.ngxSerivce.stop();
       console.log(response);
       this.dataSource = new MatTableDataSource(response);
@@ -95,7 +96,39 @@ export class UserComponent implements OnInit {
     );
   }
 
+  //TESTAR TUDO
   handleDeleteAction(values: any) {
+    const dialogConifg = new MatDialogConfig();
+    dialogConifg.data = {
+      message: 'Deseja realmente excluir o usuário ' + values.nome + '?',
+    }
+    dialogConifg.width = '850px';
+    const dialogRef = this.dialogRef.open(DialogConfirmartionComponent, dialogConifg);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response) =>{
+      this.ngxSerivce.start();
+      this.deleteUser(values.id_usuario);
+      dialogRef.close();
+    });
+  }
 
+  //TESTAR TUDO
+  deleteUser(id_usuario: any){
+    this.userService.delete(id_usuario).subscribe((response: any) => {
+      this.ngxSerivce.stop();
+      this.tableData();
+      this.responseMessage = response?.sucess;
+      this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.success);
+    }, (error: any) => {
+      this.ngxSerivce.stop();
+      if(error.error?.error != null){
+        this.responseMessage = error.error.error;
+      } else {
+        this.responseMessage = GlobalConstants.GenereicErrorMessage;
+      }
+      this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+    });
   }
 }
