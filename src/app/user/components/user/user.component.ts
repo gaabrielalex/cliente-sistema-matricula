@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 import { MatTab } from '@angular/material/tabs';
@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 import { CdkTableModule} from '@angular/cdk/table';
 import {DataSource} from '@angular/cdk/table';
+import { DialogAddEditComponent } from '../dialog-add-edit/dialog-add-edit.component';
 
 @Component({
   selector: 'app-user',
@@ -60,10 +61,38 @@ export class UserComponent implements OnInit {
   }
 
   handleAddAction(){
+    const dialogConifg = new MatDialogConfig();
+    dialogConifg.data = {
+      action: 'Add'
+    }
+    dialogConifg.width = '850px';
+    const dialogRef = this.dialogRef.open(DialogAddEditComponent, dialogConifg);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onAddUser.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
   }
 
   handleEditAction(values: any) {
-
+    const dialogConifg = new MatDialogConfig();
+    dialogConifg.data = {
+      action: 'Edit',
+      data: values
+    }
+    dialogConifg.width = '850px';
+    const dialogRef = this.dialogRef.open(DialogAddEditComponent, dialogConifg);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onEditUser.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
   }
 
   handleDeleteAction(values: any) {
