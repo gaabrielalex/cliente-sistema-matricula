@@ -1,1 +1,65 @@
-<p>sign-up works!</p>
+<div class="container">
+  <div class="content">
+    <h2 style="font-size: 1.5em; font-weight: bold;"><span class="fas fa-lock" aria-hidden="true"></span> Registro Sistema Matrícula </h2>
+    <form [formGroup]="signUpForm">
+      <div fxFlex  fxFalyout="collum">
+
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" required>
+          <mat-error *ngIf="signUpForm.controls.nome.touched && signUpForm.controls.nome.invalid">
+            <span *ngIf="signUpForm.controls.nome.errors?.required">Campo obrigatório</span>
+            <span *ngIf="signUpForm.controls.nome.errors?.pattern">Nome inválido, não deve possuir números, apenas letras</span>
+            <span *ngIf="signUpForm.controls.nome.errors?.minlength && !signUpForm.controls.nome.errors?.pattern">Nome inválido, o nome deve ter no mínimo 6 caracteres</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+          <mat-error *ngIf="signUpForm.controls.email.touched && signUpForm.controls.email.invalid">
+            <span *ngIf="signUpForm.controls.email.errors?.required">Campo obrigatório</span>
+            <span *ngIf="signUpForm.controls.email.errors?.pattern">Email inválido</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="senha" required>
+          <mat-error *ngIf="signUpForm.controls.senha.touched && signUpForm.controls.senha.invalid">
+            <span *ngIf="signUpForm.controls.senha.errors?.required">Campo obrigatório</span>
+            <span *ngIf="signUpForm.controls.senha.errors?.minlength">Senha inválida, a senha deve ter no mínimo 6 caracteres</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Tipos</mat-label>
+          <mat-select matInput formControlName="tipos" required>
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo"> {{ tipo === 'A' ? 'Administrador' : 'Avaliador'}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+    </form>
+
+      <div class="btn-access">
+        <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        style="width: 100%;"
+        (click)="handledSubmitSignUp()"
+        [disabled]="(!signUpForm.valid && signUpForm.dirty)">Registrar</button>
+      </div>
+
+      <div class="link">
+        <app-link
+          [text]="'Já possui cadastro? Autentique-se aqui!'"
+          [route]="'/login'">
+        </app-link>
+      </div>
+  </div>
+</div>
+
+
+
