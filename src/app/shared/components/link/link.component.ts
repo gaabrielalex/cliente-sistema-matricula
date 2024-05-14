@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LinkComponent implements OnInit {
   @Input() text: any;
+  @Input() route: any;
 
   constructor() { }
 
