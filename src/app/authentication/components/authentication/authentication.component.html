@@ -67,5 +67,11 @@
         (click)="handledSubmitLogin()"
         [disabled]="(!loginForm.valid && loginForm.dirty)">Acessar</button>
       </div>
+
+      <div class="link">
+        <app-link
+          [text]="'Ainda não possui cadastro? Registre-se aqui!'">
+        </app-link>
+      </div>
   </div>
 </div>

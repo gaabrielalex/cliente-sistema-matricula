@@ -53,3 +53,9 @@ h2 .fas {
 .btn-access {
   margin-top: 10px;
 }
+
+.link {
+  margin-top: 15px;
+  display: flex;
+  justify-content: right;
+}
