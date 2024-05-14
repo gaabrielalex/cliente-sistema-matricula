@@ -8,6 +8,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TitleComponent } from './components/title/title.component';
 import { DialogAddEditComponent } from '../user/components/dialog-add-edit/dialog-add-edit.component';
 import { DialogConfirmartionComponent } from './components/dialog-confirmartion/dialog-confirmartion.component';
+import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     TextFormFieldComponent,
@@ -20,6 +21,7 @@ import { DialogConfirmartionComponent } from './components/dialog-confirmartion/
     MatSnackBarModule,
     CommonModule,
     FormsModule,
+    MaterialModule,
   ],
   exports: [
     TextFormFieldComponent,

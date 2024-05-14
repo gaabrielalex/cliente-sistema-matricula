@@ -1,1 +1,7 @@
-<p>dialog-confirmartion works!</p>
+<mat-dialog-content class="mat-tipografy">
+  <h5>{{details.message}}</h5>
+<mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="handleChangeAction()" >Sim</button>
+  <button mat-raised-button mat-dialog-close>Não</button>
+</mat-dialog-actions>
