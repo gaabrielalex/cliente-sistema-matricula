@@ -80,7 +80,7 @@ export class DialogAddEditComponent implements OnInit {
       senha: formData.senha,
       tipo: formData.tipos
     }
-    this.userService.addUser(data).subscribe((response: any) => {
+    this.userService.add(data).subscribe((response: any) => {
       this.dialogRef.close();
       this.onAddUser.emit(response);
       this.responseMessage = response.sucess;
@@ -104,7 +104,7 @@ export class DialogAddEditComponent implements OnInit {
       senha: formData.senha,
       tipo: formData.tipos
     }
-    this.userService.updateUser(data).subscribe((response: any) => {
+    this.userService.update(data).subscribe((response: any) => {
       this.dialogRef.close();
       this.onEditUser.emit(response);
       this.responseMessage = response.sucess;
