@@ -1,1 +1,59 @@
-<p>dialog-add-edit works!</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">{{dialogData.action == 'Add' ? 'Adicionar' : 'Editar' }}</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="userForm">
+    <div fxFlex fxLayout="column">
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" required>
+          <mat-error *ngIf="userForm.controls.nome.touched && userForm.controls.nome.invalid">
+            <span *ngIf="userForm.controls.nome.errors?.required">Campo obrigatório</span>
+            <span *ngIf="userForm.controls.nome.errors?.pattern">Nome inválido, não deve possuir números, apenas letras</span>
+            <span *ngIf="userForm.controls.nome.errors?.minlength && !userForm.controls.nome.errors?.pattern">Nome inválido, o nome deve ter no mínimo 6 caracteres</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+          <mat-error *ngIf="userForm.controls.email.touched && userForm.controls.email.invalid">
+            <span *ngIf="userForm.controls.email.errors?.required">Campo obrigatório</span>
+            <span *ngIf="userForm.controls.email.errors?.pattern">Email inválido</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="outline" fxFlex style="width: 50%;">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="senha" required>
+          <mat-error *ngIf="userForm.controls.senha.touched && userForm.controls.senha.invalid">
+            <span *ngIf="userForm.controls.senha.errors?.required">Campo obrigatório</span>
+            <span *ngIf="userForm.controls.senha.errors?.minlength">Senha inválida, a senha deve ter no mínimo 6 caracteres</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex  style="width: 50%;">
+          <mat-label>Tipos</mat-label>
+          <mat-select matInput formControlName="tipos" required>
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo"> {{ tipo === 'A' ? 'Administrador' : (tipo === 'V' ? 'Avaliador' : 'Aluno') }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+<mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit" (click)="handleSubmmit()"
+    [disabled]="!(userForm.valid && userForm.dirty)">{{action == 'Add' ? 'Adicionar' : 'Editar'}}</button>
+  <button mat-raised-button color="primary" mat-dialog-close>Fechar</button>
+</mat-dialog-actions>
