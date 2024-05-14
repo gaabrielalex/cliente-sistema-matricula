@@ -62,6 +62,10 @@ export class UserComponent implements OnInit {
   }
 
   handleAddAction(){
+    if(true) {
+      this.snackBarService.openSnackBar("Funcionalidade inativa no momento", GlobalConstants.error);
+      return;
+    }
     const dialogConifg = new MatDialogConfig();
     dialogConifg.data = {
       action: 'Add'
@@ -79,6 +83,10 @@ export class UserComponent implements OnInit {
   }
 
   handleEditAction(values: any) {
+    if(true) {
+      this.snackBarService.openSnackBar("Funcionalidade inativa no momento", GlobalConstants.error);
+      return;
+    }
     const dialogConifg = new MatDialogConfig();
     dialogConifg.data = {
       action: 'Edit',
