@@ -14,6 +14,7 @@ import { MaterialModule } from './shared/material.module';
 import { DefaultLayoutModule } from './default-layout/default-layout.module';
 import { UserModule } from './user/user.module';
 import { MatTableModule } from '@angular/material/table';
+import { SignUpModule } from './sign-up/sign-up.module';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -39,6 +40,7 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     AuthenticationModule,
     DefaultLayoutModule,
     UserModule,
+    SignUpModule,
     FormsModule,
     HomeModule,
     ReactiveFormsModule,
