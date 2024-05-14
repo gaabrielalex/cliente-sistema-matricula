@@ -15,20 +15,19 @@ export class UserService {
     private router: Router,
   ) { }
 
-  //TESTAR TUDO
-  // addUser(name: string, email: string, senha: string, tipo: 'A' | 'V'){
-  //   //Apenas usuários do tipo adminstrador e avaliador podem ser cadastrados por meio desse função, o cadastro
-  //   //de usários do tipo aluno é feito por outra parte do sistema
-  //   return this.httpClient.post(
-  //     this.apiUrl + '/user',
-  //     {name: name, email: email, senha: senha, tipo: tipo},
-  //     {headers: new HttpHeaders()
-  //       .set('Content-Type', 'application/json')
-  //       .set('x-access-token', localStorage.getItem('Token') ?? '')}
-  //   );
-  // }
+  add(data: any){
+    //Apenas usuários do tipo adminstrador e avaliador podem ser cadastrados por meio desse função, o cadastro
+    //de usários do tipo aluno é feito por outra parte do sistema
+    return this.httpClient.post(
+      this.apiUrl + '/users',
+      data,
+      {headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', localStorage.getItem('Token') ?? '')}
+    );
+  }
 
-  getUsers(){
+  get(){
     return this.httpClient.get(
       this.apiUrl + '/users',
       {headers: new HttpHeaders()
@@ -36,4 +35,33 @@ export class UserService {
         .set('x-access-token', localStorage.getItem('Token') ?? '')}
     );
   }
+
+  update(data: any){
+    return this.httpClient.patch(
+      this.apiUrl + '/users/' + data.id,
+      data,
+      {headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', localStorage.getItem('Token') ?? '')}
+    );
+  }
+
+  delete(id_usuario: any){
+    return this.httpClient.delete(
+      this.apiUrl + '/users/' + id_usuario,
+      {headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', localStorage.getItem('Token') ?? '')}
+    );
+  }
+
+  getTipos(){
+    return this.httpClient.get(
+      this.apiUrl + '/users/types',
+      {headers: new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', localStorage.getItem('Token') ?? '')}
+    );
+  }
+
 }
