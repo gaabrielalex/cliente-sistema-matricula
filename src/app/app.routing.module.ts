@@ -12,6 +12,10 @@ const routes: Routes = [
     component: AuthenticationComponent
   },
   {
+    path: 'sign-up',
+    component: HomeComponent
+  },
+  {
     path: '',
     component: DefaultLayoutComponent,
     canActivate: [AuthGuard],
