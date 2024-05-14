@@ -96,7 +96,6 @@ export class UserComponent implements OnInit {
     );
   }
 
-  //TESTAR TUDO
   handleDeleteAction(values: any) {
     const dialogConifg = new MatDialogConfig();
     dialogConifg.data = {
@@ -114,7 +113,6 @@ export class UserComponent implements OnInit {
     });
   }
 
-  //TESTAR TUDO
   deleteUser(id_usuario: any){
     this.userService.delete(id_usuario).subscribe((response: any) => {
       this.ngxSerivce.stop();
