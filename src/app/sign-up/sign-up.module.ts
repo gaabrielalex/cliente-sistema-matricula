@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignUpService } from './services/sign-up.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -10,7 +13,11 @@ import { SignUpService } from './services/sign-up.service';
     SignUpComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   exports: [
     SignUpComponent
