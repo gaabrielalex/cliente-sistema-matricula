@@ -9,6 +9,9 @@ import { SharedModule } from '../shared';
 import { MaterialModule } from '../shared/material.module';
 import { MatTableModule } from '@angular/material/table';
 import { DialogAddEditComponent } from './components/dialog-add-edit/dialog-add-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { DialogAddEditComponent } from './components/dialog-add-edit/dialog-add-
     UserRoutingModule,
     SharedModule,
     MaterialModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   exports:[
     UserComponent,
