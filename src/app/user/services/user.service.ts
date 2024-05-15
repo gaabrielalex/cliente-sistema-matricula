@@ -16,8 +16,6 @@ export class UserService {
   ) { }
 
   add(data: any){
-    //Apenas usuários do tipo adminstrador e avaliador podem ser cadastrados por meio desse função, o cadastro
-    //de usários do tipo aluno é feito por outra parte do sistema
     return this.httpClient.post(
       this.apiUrl + '/users',
       data,
