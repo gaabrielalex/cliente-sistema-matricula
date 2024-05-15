@@ -1,4 +1,3 @@
-import { EditaisModule } from './editais/editais.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -16,6 +15,7 @@ import { DefaultLayoutModule } from './default-layout/default-layout.module';
 import { UserModule } from './user/user.module';
 import { MatTableModule } from '@angular/material/table';
 import { SignUpModule } from './sign-up/sign-up.module';
+import { EditaisModule } from './editais/editais.module';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',

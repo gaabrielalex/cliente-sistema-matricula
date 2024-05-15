@@ -31,6 +31,11 @@ const routes: Routes = [
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
       },
       {
+        path: 'editais',
+        canActivate: [AdminGuardService],
+        loadChildren: () => import('./editais/editais.module').then(m => m.EditaisModule)
+      },
+      {
         path: '**',
         redirectTo: '/home'
       }
