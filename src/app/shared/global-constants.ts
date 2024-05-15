@@ -1,3 +1,5 @@
+import { HttpHeaders } from "@angular/common/http";
+
 export class GlobalConstants {
   //Message
   public static GenereicErrorMessage: string = "Ocorreu um erro inesperado, tente novamente mais tarde.";
@@ -10,4 +12,11 @@ export class GlobalConstants {
   //Variable
   public static error: string = "error";
   public static success: string = "success";
+
+  //Routes default configs
+  public static default_headers_routes: any = {
+    headers: new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('x-access-token', localStorage.getItem('Token') ?? '')
+  }
 }
