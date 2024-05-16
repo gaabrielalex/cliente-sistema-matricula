@@ -10,10 +10,9 @@ import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
-    EditaisComponent
+    EditaisComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
   ],
   exports: [
-    EditaisComponent
+    EditaisComponent,
   ],
   providers: [
     EditaisService
