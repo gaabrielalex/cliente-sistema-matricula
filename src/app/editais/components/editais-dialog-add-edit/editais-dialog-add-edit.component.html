@@ -1,1 +1,42 @@
-<p>editais-dialog-add-edit works!</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">{{dialogData.action == 'Add' ? 'Adicionar' : 'Editar' }}</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="editalForm">
+    <div fxFlex fxLayout="column">
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" required>
+          <mat-error *ngIf="editalForm.controls.nome.touched && editalForm.controls.nome.invalid">
+            <span *ngIf="editalForm.controls.nome.errors?.required">Campo obrigatório</span>
+            <span *ngIf="editalForm.controls.nome.errors?.minlength && !editalForm.controls.nome.errors?.pattern">Nome inválido, o nome deve ter no mínimo 8 caracteres</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Data de abertura</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dt_abertura" required>
+          <mat-error *ngIf="editalForm.controls.dt_abertura.touched && editalForm.controls.dt_abertura.invalid">
+            <span *ngIf="editalForm.controls.dt_abertura.errors?.required">Campo obrigatório</span>
+          </mat-error>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+<mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit" (click)="handleSubmmit()"
+    [disabled]="!(editalForm.valid && editalForm.dirty)">{{action == 'Add' ? 'Adicionar' : 'Editar'}}</button>
+  <button mat-raised-button color="primary" mat-dialog-close>Fechar</button>
+</mat-dialog-actions>
