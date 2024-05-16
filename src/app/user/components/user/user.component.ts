@@ -6,7 +6,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 import { MatTab } from '@angular/material/tabs';
 import { MatTableDataSource } from '@angular/material/table';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/shared/others/global-constants';
 import { CdkTableModule} from '@angular/cdk/table';
 import {DataSource} from '@angular/cdk/table';
 import { DialogAddEditComponent } from '../dialog-add-edit/dialog-add-edit.component';

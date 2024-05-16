@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/shared/others/global-constants';
 
 @Component({
   selector: 'app-dialog-add-edit',

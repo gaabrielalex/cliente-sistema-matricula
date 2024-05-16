@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/shared/others/global-constants';
 import { AuthenticationService } from 'src/app/authentication';
 import { UserService } from 'src/app/user/services/user.service';
 

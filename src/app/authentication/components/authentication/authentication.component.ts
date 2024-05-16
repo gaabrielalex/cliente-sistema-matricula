@@ -5,7 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/shared/others/global-constants';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 
 @Component({

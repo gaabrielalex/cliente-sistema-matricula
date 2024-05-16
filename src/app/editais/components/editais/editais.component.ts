@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/shared/others/global-constants';
 
 @Component({
   selector: 'app-editais',

@@ -3,7 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTr
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../../../authentication/services/authentication.service';
 import { SnackbarService } from '../snackbar/snackbar.service';
-import { GlobalConstants } from '../../global-constants';
+import { GlobalConstants } from '../../others/global-constants';
 
 @Injectable({
   providedIn: 'root'

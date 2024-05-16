@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { SnackbarService } from '../snackbar/snackbar.service';
 import { Observable } from 'rxjs';
-import { GlobalConstants } from '../../global-constants';
+import { GlobalConstants } from '../../others/global-constants';
 
 @Injectable({
   providedIn: 'root'
