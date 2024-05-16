@@ -16,6 +16,8 @@ import { UserModule } from './user/user.module';
 import { MatTableModule } from '@angular/material/table';
 import { SignUpModule } from './sign-up/sign-up.module';
 import { EditaisModule } from './editais/editais.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -51,13 +53,19 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     BrowserAnimationsModule,
     MaterialModule,
     MatTableModule,
-    EditaisModule
+    EditaisModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {
       provide: MatDialogRef,
       useValue: {}
     },
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'pt-BR'
+    }
   ],
   bootstrap: [AppComponent]
 })
