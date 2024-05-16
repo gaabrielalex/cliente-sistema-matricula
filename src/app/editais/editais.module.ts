@@ -9,11 +9,13 @@ import { MaterialModule } from '../shared/material.module';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogAddEditComponent } from './components/dialog-add-edit/dialog-add-edit.component';
 
 
 @NgModule({
   declarations: [
-    EditaisComponent
+    EditaisComponent,
+    DialogAddEditComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
   ],
   exports: [
-    EditaisComponent
+    EditaisComponent,
+    DialogAddEditComponent
   ],
   providers: [
     EditaisService
