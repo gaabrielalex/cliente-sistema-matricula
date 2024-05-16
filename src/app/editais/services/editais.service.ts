@@ -23,6 +23,7 @@ export class EditaisService {
     );
   }
 
+  //TESTAR
   add(data: any){
     return this.httpClient.post(
       this.apiUrl + this.path_route,
@@ -31,6 +32,7 @@ export class EditaisService {
     );
   }
 
+  //TESTAR
   update(data: any){
     return this.httpClient.patch(
       this.apiUrl + this.path_route + '/' + data.id,
@@ -39,6 +41,7 @@ export class EditaisService {
     );
   }
 
+  //TESTAR
   delete(id_edital: any){
     return this.httpClient.delete(
       this.apiUrl + this.path_route + '/' + id_edital,
