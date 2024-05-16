@@ -104,13 +104,13 @@ export class EditaisComponent implements OnInit {
     });
     const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response) =>{
       this.ngxSerivce.start();
-      this.deleteUser(values.id_edital);
+      this.deleteEdital(values.id_edital);
       dialogRef.close();
     });
   }
 
-  deleteUser(id_edital: any){
-    this.editaisService.delete(id_edital).subscribe((response: any) => {
+  deleteEdital(id: any){
+    this.editaisService.delete(id).subscribe((response: any) => {
       this.ngxSerivce.stop();
       this.tableData();
       this.responseMessage = response?.success;

@@ -39,9 +39,9 @@ export class EditaisService {
     );
   }
 
-  delete(id_edital: any){
+  delete(id: any){
     return this.httpClient.delete(
-      this.apiUrl + this.path_route + '/' + id_edital,
+      this.apiUrl + this.path_route + '/' + id,
       GlobalConstants.default_headers_routes
     );
   }
