@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EditaisService } from '../../services/editais.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { GlobalConstants } from 'src/app/shared/others/global-constants';
+import { EditaisDialogAddEditComponent } from '../editais-dialog-add-edit/editais-dialog-add-edit.component';
+import { DialogConfirmartionComponent } from 'src/app/shared/components/dialog-confirmartion/dialog-confirmartion.component';
 
 @Component({
   selector: 'app-editais',
@@ -56,11 +58,71 @@ export class EditaisComponent implements OnInit {
   }
 
   handleAddAction(){
+    const dialogConifg = new MatDialogConfig();
+    dialogConifg.data = {
+      action: 'Add'
+    }
+    dialogConifg.width = '850px';
+    const dialogRef = this.dialogRef.open(EditaisDialogAddEditComponent, dialogConifg);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onAddEdital.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
   }
 
   handleEditAction(values: any) {
+    const dialogConifg = new MatDialogConfig();
+    dialogConifg.data = {
+      action: 'Edit',
+      data: values
+    }
+    dialogConifg.width = '850px';
+    const dialogRef = this.dialogRef.open(EditaisDialogAddEditComponent, dialogConifg);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onEditEdital.subscribe(
+      (response) => {
+        this.tableData();
+      }
+    );
   }
 
   handleDeleteAction(values: any) {
+    const dialogConifg = new MatDialogConfig();
+    dialogConifg.data = {
+      message: 'Deseja realmente excluir o edital ' + values.nome + '?',
+    }
+    dialogConifg.width = '850px';
+    const dialogRef = this.dialogRef.open(DialogConfirmartionComponent, dialogConifg);
+    this.router.events.subscribe(() => {
+      dialogRef.close();
+    });
+    const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response) =>{
+      this.ngxSerivce.start();
+      this.deleteUser(values.id_edital);
+      dialogRef.close();
+    });
+  }
+
+  deleteUser(id_edital: any){
+    this.editaisService.delete(id_edital).subscribe((response: any) => {
+      this.ngxSerivce.stop();
+      this.tableData();
+      this.responseMessage = response?.success;
+      this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.success);
+    }, (error: any) => {
+      this.ngxSerivce.stop();
+      if(error.error?.error != null){
+        this.responseMessage = error.error.error;
+      } else {
+        this.responseMessage = GlobalConstants.GenereicErrorMessage;
+      }
+      this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+    });
   }
 }
