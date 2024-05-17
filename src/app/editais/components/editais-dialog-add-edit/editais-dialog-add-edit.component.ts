@@ -45,6 +45,16 @@ export class EditaisDialogAddEditComponent implements OnInit {
 
       this.editalForm.patchValue(this.dialogData.data);
     }
+
+    //Caso exclusivo da parte de valiação do campo planilha_alunos_inscritos
+    //Caso a opção seja de editar esse campo não deve ser obrigatório
+    if(this.dialogData.action === 'Edit'){
+      this.editalForm.get('planilha_alunos_inscritos').clearValidators();
+      this.editalForm.get('planilha_alunos_inscritos').updateValueAndValidity();
+    } else {
+      this.editalForm.get('planilha_alunos_inscritos').setValidators([Validators.required]);
+      this.editalForm.get('planilha_alunos_inscritos').updateValueAndValidity();
+    }
   }
 
   handleSubmmit(){
