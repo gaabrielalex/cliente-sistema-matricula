@@ -19,7 +19,9 @@ export class EditaisDialogAddEditComponent implements OnInit {
   dialogAction: any = 'Add';
   action: any = 'Add';
   responseMessage: any;
-  tipos: any = [];
+  fileToUpload: File | null = null;
+  fileError: string | null = null;
+  allowedExtensionsForFile = ['xlsx'];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
@@ -34,6 +36,7 @@ export class EditaisDialogAddEditComponent implements OnInit {
       id: [null],
       nome: [null, [Validators.required, Validators.minLength(8)]],
       dt_abertura: [null, [Validators.required]],
+      planilha_alunos_inscritos: [null, [Validators.required]],
     })
 
     if(this.dialogData.action === 'Edit'){
@@ -94,6 +97,22 @@ export class EditaisDialogAddEditComponent implements OnInit {
       }
       this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
     });
+  }
+
+  onFileChange(event: any) {
+    const file = event.target?.files[0];
+    this.fileError = null; // Reseta a mensagem de erro
+
+    if (file) {
+      const extension = file.name.split('.').pop().toLowerCase();
+      if (this.allowedExtensionsForFile.includes(extension)) {
+        this.fileToUpload = file;
+      } else {
+        this.fileError = `Extensão de arquivo não permitida. Permitido: .${this.allowedExtensionsForFile.join(', ')}`;
+        this.editalForm.get('planilha_alunos_inscritos').setErrors({ 'invalidExtension': true });
+        this.fileToUpload = null;
+      }
+    }
   }
 
 }

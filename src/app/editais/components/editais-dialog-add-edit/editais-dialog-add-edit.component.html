@@ -31,6 +31,15 @@
         </mat-form-field>
       </div>
 
+      <div fxLayout="row wrap" style="margin-top: 15px; margin-left: 7px;">
+        <label style="font-weight: 700;">Planilha de alunos inscritos</label>
+        <input type="file" formControlName="planilha_alunos_inscritos" required (change)="onFileChange($event)" >
+          <mat-error *ngIf="editalForm.controls.planilha_alunos_inscritos.touched && editalForm.controls.planilha_alunos_inscritos.invalid">
+            <span *ngIf="editalForm.controls.planilha_alunos_inscritos.errors?.required">Campo obrigatório</span>
+            <span *ngIf="fileError">{{ fileError }}</span>
+          </mat-error>
+      </div>
+
     </div>
   </form>
 <mat-dialog-content>
