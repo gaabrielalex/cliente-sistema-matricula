@@ -34,11 +34,12 @@
       <div fxLayout="row wrap" style="margin-top: 15px; margin-left: 7px;" >
         <label style="font-weight: 700;">{{ (dialogAction !== 'Edit') ? 'Planilha de alunos inscritos' : 'Obs.: Não é possível editar a lista de alunos inscritos. O processo de inscrição por meio desta funcionalidade não pode ser refeito.' }}</label>
         <div *ngIf="dialogAction !== 'Edit'">
-          <input type="file" formControlName="planilha_alunos_inscritos" required (change)="onFileChange($event)">
+          <input type="file" formControlName="planilha_alunos_inscritos" required (change)="onFileChange($event)" style="margin-top: 8px; margin-bottom: 15px">
             <mat-error *ngIf="editalForm.controls.planilha_alunos_inscritos.touched && editalForm.controls.planilha_alunos_inscritos.invalid">
               <span *ngIf="editalForm.controls.planilha_alunos_inscritos.errors?.required">Campo obrigatório</span>
               <span *ngIf="fileError">{{ fileError }}</span>
             </mat-error>
+            <mat-hint>Obs.: A planilha deve ser no formato .xlsx, bem como deve possuir as colunas nome, CPF, e-mail, telefone, curso, classificacao e status, especificamente nessa ordem. A estrutura da planilha deve começar na linha 1, coluna 1 também.</mat-hint>
         </div>
       </div>
 
