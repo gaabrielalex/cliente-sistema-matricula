@@ -6,6 +6,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.servi
 import { GlobalConstants } from 'src/app/shared/others/global-constants';
 import { dateValidator } from 'src/app/shared/others/validators';
 import { convertDate } from 'src/app/shared/others/converts';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-editais-dialog-add-edit',
@@ -22,6 +23,7 @@ export class EditaisDialogAddEditComponent implements OnInit {
   fileToUpload: File | null = null;
   fileError: string | null = null;
   allowedExtensionsForFile = ['xlsx'];
+  dataFromExcel: any[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
@@ -125,12 +127,30 @@ export class EditaisDialogAddEditComponent implements OnInit {
       const extension = file.name.split('.').pop().toLowerCase();
       if (this.allowedExtensionsForFile.includes(extension)) {
         this.fileToUpload = file;
+        this.readExcelFile(file);
       } else {
         this.fileError = `Extensão de arquivo não permitida. Permitido: .${this.allowedExtensionsForFile.join(', ')}`;
         this.editalForm.get('planilha_alunos_inscritos').setErrors({ 'invalidExtension': true });
         this.fileToUpload = null;
       }
     }
+
+  }
+
+  //Função para caso vc queria enviar os dados da planilha para o
+  //backend em json ao invés de enviar o arquivo diretamente
+  readExcelFile(file: File) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const bstr: string = e.target.result;
+      const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+      const wsname: string = wb.SheetNames[0];
+      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+      this.dataFromExcel = XLSX.utils.sheet_to_json(ws, { header: 1 });
+      console.log(this.dataFromExcel); // Aqui você pode ver os dados da planilha
+      // Faça o tratamento necessário com os dados da planilha
+    };
+    reader.readAsBinaryString(file);
   }
 
 }
