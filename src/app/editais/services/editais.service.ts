@@ -23,13 +23,23 @@ export class EditaisService {
     );
   }
 
+  //Usando o form data para que seja possível enviar arquivos
   add(data: any){
     return this.httpClient.post(
       this.apiUrl + this.path_route,
       data,
-      GlobalConstants.default_headers_routes
+      GlobalConstants.default_headers_routes_form_data
     );
   }
+
+  //Antes de não ter arquivo no meio era assim que fazia
+  // add(data: any){
+  //   return this.httpClient.post(
+  //     this.apiUrl + this.path_route,
+  //     data,
+  //     GlobalConstants.default_headers_routes
+  //   );
+  // }
 
   update(data: any){
     return this.httpClient.patch(

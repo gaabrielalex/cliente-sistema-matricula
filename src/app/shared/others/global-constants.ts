@@ -19,4 +19,10 @@ export class GlobalConstants {
       .set('Content-Type', 'application/json')
       .set('x-access-token', localStorage.getItem('Token') ?? '')
   }
+
+  //Envio de arquivos
+  public static default_headers_routes_form_data: any = {
+    headers: new HttpHeaders()
+      .set('x-access-token', localStorage.getItem('Token') ?? '')
+  }
 }

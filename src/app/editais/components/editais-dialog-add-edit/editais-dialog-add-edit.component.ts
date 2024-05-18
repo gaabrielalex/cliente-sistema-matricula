@@ -67,11 +67,19 @@ export class EditaisDialogAddEditComponent implements OnInit {
 
   add(){
     var formData = this.editalForm.value;
-    var data = {
-      // id: this.dialogData.data.id ?? null, //Para add não precisa do id
-      nome: formData.nome,
-      dt_abertura: convertDate(formData.dt_abertura),
-    }
+    //Maneira antes de ter arquivo no meio para enviar
+    // var data = {
+    //   // id: this.dialogData.data.id ?? null, //Para add não precisa do id
+    //   nome: formData.nome,
+    //   dt_abertura: convertDate(formData.dt_abertura),
+    // }
+
+    //Maneira para enviar arquivo
+    var data: FormData = new FormData();
+    data.append('nome', formData.nome);
+    data.append('dt_abertura', convertDate(formData.dt_abertura));
+    data.append('planilha_alunos_inscritos', this.fileToUpload ?? new Blob(), this.fileToUpload == null ? "" : this.fileToUpload.name);
+
     this.editaisService.add(data).subscribe((response: any) => {
       this.dialogRef.close();
       this.onAddEdital.emit(response);
