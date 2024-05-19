@@ -24,6 +24,7 @@ export class EditaisDialogAddEditComponent implements OnInit {
   fileError: string | null = null;
   allowedExtensionsForFile = ['xlsx'];
   dataFromExcel: any[] = [];
+  enviarPlanilhaAlunosInscritosEmJson = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
@@ -80,8 +81,12 @@ export class EditaisDialogAddEditComponent implements OnInit {
     var data: FormData = new FormData();
     data.append('nome', formData.nome);
     data.append('dt_abertura', convertDate(formData.dt_abertura));
-    data.append('planilha_alunos_inscritos', this.fileToUpload ?? new Blob(), this.fileToUpload == null ? "" : this.fileToUpload.name);
-
+    if(!this.enviarPlanilhaAlunosInscritosEmJson){
+      data.append('planilha_alunos_inscritos', this.fileToUpload ?? new Blob(), this.fileToUpload == null ? "" : this.fileToUpload.name);
+    } else{
+      //Caso queira enviar os dados da planilha em json
+      data.append('planilha_alunos_inscritos_json', JSON.stringify(this.dataFromExcel));
+    }
     this.editaisService.add(data).subscribe((response: any) => {
       this.dialogRef.close();
       this.onAddEdital.emit(response);
@@ -127,7 +132,7 @@ export class EditaisDialogAddEditComponent implements OnInit {
       const extension = file.name.split('.').pop().toLowerCase();
       if (this.allowedExtensionsForFile.includes(extension)) {
         this.fileToUpload = file;
-        this.readExcelFile(file);
+        this.transformarArquivoExcelEmJson(file);
       } else {
         this.fileError = `Extensão de arquivo não permitida. Permitido: .${this.allowedExtensionsForFile.join(', ')}`;
         this.editalForm.get('planilha_alunos_inscritos').setErrors({ 'invalidExtension': true });
@@ -139,7 +144,7 @@ export class EditaisDialogAddEditComponent implements OnInit {
 
   //Função para caso vc queria enviar os dados da planilha para o
   //backend em json ao invés de enviar o arquivo diretamente
-  readExcelFile(file: File) {
+  transformarArquivoExcelEmJson(file: File) {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       const bstr: string = e.target.result;
