@@ -10,12 +10,12 @@ export class SnackbarService {
     private snackBar: MatSnackBar
   ) { }
 
-  openSnackBar(message: string, action: string) {
+  openSnackBar(message: string, action: string, duration?: number) {
     if (action === "error") {
       this.snackBar.open(message, '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
-        duration: 2000,
+        duration: duration || 2000,
         panelClass: ['red-snackbar']
       });
     }
@@ -23,7 +23,7 @@ export class SnackbarService {
       this.snackBar.open(message, '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
-        duration: 2000,
+        duration: duration || 2000,
         panelClass: ['green-snackbar']
       });
     }

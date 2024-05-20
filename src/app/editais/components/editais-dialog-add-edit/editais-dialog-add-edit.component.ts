@@ -91,14 +91,14 @@ export class EditaisDialogAddEditComponent implements OnInit {
       this.dialogRef.close();
       this.onAddEdital.emit(response);
       this.responseMessage = response.success;
-      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.success);
+      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.success, 8000);
     }, (error: any) => {
       if(error.error?.error != null){
         this.responseMessage = error.error.error;
       } else {
         this.responseMessage = GlobalConstants.GenereicErrorMessage;
       }
-      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error, 8000);
     });
   }
 
