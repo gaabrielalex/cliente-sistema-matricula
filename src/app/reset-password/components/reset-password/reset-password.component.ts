@@ -1,3 +1,4 @@
+import { AuthenticationService } from 'src/app/authentication';
 import { Component, OnInit } from '@angular/core';
 import { ResetPasswordService } from '../../services/reset-password.service';
 import { UserService } from 'src/app/user/services/user.service';
@@ -18,7 +19,7 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(
     private resetPasswordService: ResetPasswordService,
-    private userService: UserService,
+    private authenticationService: AuthenticationService,
     private router: Router,
     private formBuilder: FormBuilder,
     private ngxSerivce: NgxUiLoaderService,
@@ -43,5 +44,44 @@ export class ResetPasswordComponent implements OnInit {
     }
 
     this.ngxSerivce.start();
+
+    const usuarioString = localStorage.getItem('User');
+    const usuario = JSON.parse(usuarioString || '{}');
+    console.log(usuario);
+    console.log(usuario.email);
+    var data = {
+      email: usuario.email,
+      senha_atual: formData.senhaAtual,
+      nova_senha:  formData.novaSenha,
+    }
+
+    this.resetPasswordService.resetPassword(data).subscribe((response: any) => {
+      this.snackBarService.openSnackBar("Senha redefinida com sucesso. Sua autenticação será reiniciada com as novas credenciais", GlobalConstants.success);
+
+      //Fazendo o login do usuário
+      this.authenticationService.login(data.email, data.nova_senha).subscribe((response: any) => {
+        this.ngxSerivce.stop();
+        localStorage.setItem('Token', response.acessToken);
+        localStorage.setItem('User', JSON.stringify(response.user));
+        this.router.navigate(['/home']);
+        this.snackBarService.openSnackBar("Sua senha foi redefinida com sucesso, bem como sua autenticação foi reiniciada", GlobalConstants.success);
+      },(error) => {
+        this.ngxSerivce.stop();
+        if(error.error?.error != null){
+          this.responseMessage = error.error.error;
+        } else {
+          this.responseMessage = GlobalConstants.GenereicErrorMessage;
+        }
+        this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+      })
+    },(error) => {
+      this.ngxSerivce.stop();
+      if(error.error?.error != null){
+        this.responseMessage = error.error.error;
+      } else {
+        this.responseMessage = GlobalConstants.GenereicErrorMessage;
+      }
+      this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+    })
   }
 }
