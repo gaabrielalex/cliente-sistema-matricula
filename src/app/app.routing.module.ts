@@ -36,6 +36,10 @@ const routes: Routes = [
         loadChildren: () => import('./editais/editais.module').then(m => m.EditaisModule)
       },
       {
+        path: 'reset-password',
+        loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule)
+      },
+      {
         path: '**',
         redirectTo: '/home'
       }
