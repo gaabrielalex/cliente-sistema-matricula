@@ -80,6 +80,30 @@
               </label>
             </div>
 
+            <!-- Para caso seja uma matricula esta como o sttaus de completa -->
+            <div fxFlex *ngIf="statusMatricula === 'C'">
+              <label style="font-weight: 500; font-size: 1.2em; margin-bottom: 10px; text-align: left;">
+                <span>Forneça as documentações da matrícula em um único arquivo PDF. Lembre-se de que as documentações necessárias são:</span>
+                <span>
+                  <ul style="margin-top: 5px; font-weight: 400;">
+                    <li>Certidão de nascimento</li>
+                    <li>Comprovante de residência</li>
+                    <li>Histórico escolar</li>
+                    <li>Foto 3x4</li>
+                    <li>Cédula de identidade</li>
+                    <li>CPF</li>
+                  </ul>
+                </span>
+                <div>
+                  <input type="file" formControlName="pdf_docs_matricula" required (change)="onFileChange($event)" style="margin-top: 30px; margin-bottom: 15px">
+                    <mat-error *ngIf="matriculaAlunosForm.controls.pdf_docs_matricula.touched && matriculaAlunosForm.controls.pdf_docs_matricula.invalid">
+                      <span *ngIf="matriculaAlunosForm.controls.pdf_docs_matricula.errors?.required">Campo obrigatório</span>
+                      <span *ngIf="fileError">{{ fileError }}</span>
+                    </mat-error>
+                </div>
+              </label>
+            </div>
+
           </div>
         </div>
       </form>
