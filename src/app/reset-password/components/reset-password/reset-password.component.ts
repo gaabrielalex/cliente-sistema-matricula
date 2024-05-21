@@ -47,8 +47,6 @@ export class ResetPasswordComponent implements OnInit {
 
     const usuarioString = localStorage.getItem('User');
     const usuario = JSON.parse(usuarioString || '{}');
-    console.log(usuario);
-    console.log(usuario.email);
     var data = {
       email: usuario.email,
       senha_atual: formData.senhaAtual,
