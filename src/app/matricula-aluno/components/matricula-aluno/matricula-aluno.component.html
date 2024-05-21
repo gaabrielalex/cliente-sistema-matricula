@@ -1,1 +1,11 @@
-<app-banner-information *ngIf="statusMatricula === 'X'" [title]="'Você não possui nenhuma matrícula ativa na instituição!'" [subtitle]="'Aguarde as chamadas seguintes dos editais pelos quais vc se inscreveu'"></app-banner-information>
+<app-banner-information
+  *ngIf="statusMatricula === 'X'"
+  [title]="'Você não possui nenhuma matrícula ativa na instituição!'"
+  [subtitle]="'Aguarde as chamadas seguintes dos editais pelos quais vc se inscreveu'">
+</app-banner-information>
+
+<app-banner-information
+  *ngIf="statusMatricula === 'A'"
+  [title]="'Sua matrícula	foi aprovada!'"
+  [subtitle]="'Não é mais necessário realizar nenhuma ação'">
+</app-banner-information>
