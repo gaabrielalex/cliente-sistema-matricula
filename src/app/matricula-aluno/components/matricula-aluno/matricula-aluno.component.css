@@ -6,13 +6,13 @@
 
 @media (min-width: 768px) and (max-width: 1150px) {
   .content {
-    width: calc(90vw / 2);
+    width: calc(90vw / 1.5);
   }
 }
 
 @media (min-width: 1150px) {
   .content {
-    width: calc(90vw / 2);
+    width: calc(90vw / 1.5);
   }
 }
 
