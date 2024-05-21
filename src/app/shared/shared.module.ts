@@ -1,3 +1,4 @@
+import { BannerInformationComponent } from './components/banner-information/banner-information.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TextFormFieldComponent } from './components/text-form-field/text-form-field.component';
@@ -16,6 +17,7 @@ import { MaterialModule } from './material.module';
     LinkComponent,
     TitleComponent,
     DialogConfirmartionComponent,
+    BannerInformationComponent,
   ],
   imports: [
     MatSnackBarModule,
@@ -29,6 +31,7 @@ import { MaterialModule } from './material.module';
     LinkComponent,
     TitleComponent,
     DialogConfirmartionComponent,
+    BannerInformationComponent,
   ],
   providers: [
   ]
