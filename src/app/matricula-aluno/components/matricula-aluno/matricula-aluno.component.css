@@ -16,12 +16,20 @@
   }
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 65vh;
+}
+
 .container {
   height: 85vh;
   width: 85vw;
   display: flex;
   justify-content: center;
   align-items: center;
+
 };
 
 h2 {
