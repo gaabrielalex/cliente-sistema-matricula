@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatriculaAlunoService } from '../../services/matricula-aluno.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
+import { GlobalConstants } from 'src/app/shared/others/global-constants';
 
 @Component({
   selector: 'app-matricula-aluno',
@@ -43,7 +44,7 @@ export class MatriculaAlunoComponent implements OnInit {
         this.statusMatricula = response[0].status;
 
         //Linha para forçar o status da matricula para testes
-        // this.statusMatricula = 'C';
+        // this.statusMatricula = 'R';
 
       } else {
         //Se não existir matricula então o status é X
@@ -57,7 +58,11 @@ export class MatriculaAlunoComponent implements OnInit {
   }
 
   handledSubmit() {
-
+    var formData = this.matriculaAlunosForm.value;
+    if (formData.pdf_docs_matricula == null) {
+      this.snackbarService.openSnackBar("Arquivo das documentações não foi fornecido. Por favor, forneça o arquivo para prosseguir com a operação", GlobalConstants.error);
+      return;
+    }
   }
 
   onFileChange(event: any) {
