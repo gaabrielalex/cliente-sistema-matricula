@@ -9,3 +9,95 @@
   [title]="'Sua matrícula	foi aprovada!'"
   [subtitle]="'Não é mais necessário realizar nenhuma ação'">
 </app-banner-information>
+
+<!-- Essa parte só aparece se o status da matrícula for I, C ou R -->
+<div
+  *ngIf="statusMatricula === 'I' || statusMatricula === 'C' || statusMatricula === 'R'">
+  <div class="container">
+    <div class="content">
+      <h2 style="font-size: 1.5em; font-weight: bold;">
+        <span *ngIf="statusMatricula === 'I'">Efetivar Matrícula</span>
+        <span *ngIf="statusMatricula === 'C'">Editar Matrícula</span>
+        <span *ngIf="statusMatricula === 'R'">Reenviar Matrícula</span>
+      </h2>
+      <form [formGroup]="matriculaAlunosForm">
+        <div fxFlex  fxFalyout="collum">
+
+          <div fxLayout="row wrap" style="margin-top: 15px; margin-left: 7px;">;
+
+            <!-- Para caso seja uma matricula que foi reprovada -->
+            <div fxFlex *ngIf="statusMatricula === 'R'">
+              <label style="font-weight: 500; font-size: 1.2em; margin-bottom: 10px; text-align: left;">
+                <span>A sua matrícula foi reprovada! Os comentários referentes a avaliação da mesma se encontram logo abaixo:</span>
+                <textarea disabled style="width: 100%; height: 100px; margin-top: 10px;">{{comentariosAvalicao}}</textarea>
+              </label>
+            </div>
+
+            <div fxFlex *ngIf="statusMatricula === 'R'">
+              <label style="font-weight: 500; font-size: 1.2em; margin-bottom: 10px; text-align: left; margin-top: 20px;">
+                <span>Reenvie as documentações da matrícula em um único arquivo PDF. Lembre-se de que as documentações necessárias são:</span>
+                <span>
+                  <ul style="margin-top: 5px; font-weight: 400;">
+                    <li>Certidão de nascimento</li>
+                    <li>Comprovante de residência</li>
+                    <li>Histórico escolar</li>
+                    <li>Foto 3x4</li>
+                    <li>Cédula de identidade</li>
+                    <li>CPF</li>
+                  </ul>
+                </span>
+                <div>
+                  <input type="file" formControlName="pdf_docs_matricula" required (change)="onFileChange($event)" style="margin-top: 30px; margin-bottom: 15px">
+                    <mat-error *ngIf="matriculaAlunosForm.controls.pdf_docs_matricula.touched && matriculaAlunosForm.controls.pdf_docs_matricula.invalid">
+                      <span *ngIf="matriculaAlunosForm.controls.pdf_docs_matricula.errors?.required">Campo obrigatório</span>
+                      <span *ngIf="fileError">{{ fileError }}</span>
+                    </mat-error>
+                </div>
+              </label>
+            </div>
+
+            <!-- Para caso seja uma matricula esta como o sttaus de incompleta -->
+            <div fxFlex *ngIf="statusMatricula === 'I'">
+              <label style="font-weight: 500; font-size: 1.2em; margin-bottom: 10px; text-align: left;">
+                <span>Forneça as documentações da matrícula em um único arquivo PDF. As documentações necessárias são:</span>
+                <span>
+                  <ul style="margin-top: 5px; font-weight: 400;">
+                    <li>Certidão de nascimento</li>
+                    <li>Comprovante de residência</li>
+                    <li>Histórico escolar</li>
+                    <li>Foto 3x4</li>
+                    <li>Cédula de identidade</li>
+                    <li>CPF</li>
+                  </ul>
+                </span>
+                <div>
+                  <input type="file" formControlName="pdf_docs_matricula" required (change)="onFileChange($event)" style="margin-top: 30px; margin-bottom: 15px">
+                    <mat-error *ngIf="matriculaAlunosForm.controls.pdf_docs_matricula.touched && matriculaAlunosForm.controls.pdf_docs_matricula.invalid">
+                      <span *ngIf="matriculaAlunosForm.controls.pdf_docs_matricula.errors?.required">Campo obrigatório</span>
+                      <span *ngIf="fileError">{{ fileError }}</span>
+                    </mat-error>
+                </div>
+              </label>
+            </div>
+
+          </div>
+        </div>
+      </form>
+
+        <div class="btn-access">
+          <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          style="width: 40%;"
+          (click)="handledSubmit()"
+          [disabled]="(!matriculaAlunosForm.valid && matriculaAlunosForm.dirty)">
+          <span *ngIf="statusMatricula === 'I'">Salvar</span>
+          <span *ngIf="statusMatricula === 'C'">Editar</span>
+          <span *ngIf="statusMatricula === 'R'">Reenviar</span>
+          </button>
+        </div>
+    </div>
+  </div>
+
+</div>
