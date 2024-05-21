@@ -45,6 +45,7 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     DefaultLayoutModule,
     UserModule,
     ResetPasswordModule,
+    MaterialModule,
     SignUpModule,
     FormsModule,
     HomeModule,

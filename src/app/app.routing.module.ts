@@ -1,3 +1,4 @@
+import { AlunoGuardService } from './shared/services/aluno-guard/aluno-guard.service';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/components/home/home.component';
@@ -38,6 +39,11 @@ const routes: Routes = [
       {
         path: 'reset-password',
         loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule)
+      },
+      {
+        path: 'matricula-aluno',
+        canActivate: [AlunoGuardService],
+        loadChildren: () => import('./matricula-aluno/matricula-aluno.module').then(m => m.MatriculaAlunoModule)
       },
       {
         path: '**',
