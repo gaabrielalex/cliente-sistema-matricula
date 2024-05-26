@@ -23,4 +23,35 @@ export class MatriculaAlunoService {
     );
   }
 
+  efetivarMatricula(data:any, email: string) {
+    return this.httpClient.patch(
+      this.apiUrl + "/efetivar-matricula" + `/${email}`,
+      data,
+      GlobalConstants.default_headers_routes_form_data
+    );
+  }
+
+  editarMatricula(data:any, email: string) {
+    return this.httpClient.patch(
+      this.apiUrl + "/editar-matricula" + `/${email}`,
+      data,
+      GlobalConstants.default_headers_routes_form_data
+    );
+  }
+
+  reenviarMatricula(data:any, email: string) {
+    return this.httpClient.patch(
+      this.apiUrl + "/reenviar-matricula" + `/${email}`,
+      data,
+      GlobalConstants.default_headers_routes_form_data
+    );
+  }
+
+  obterDownloadUrlDasDocumentacoes(email: string) {
+    return this.httpClient.get(
+      this.apiUrl + this.path_route + `/${email}` + '/documentacoes',
+      GlobalConstants.default_headers_routes
+    );
+  }
+
 }
