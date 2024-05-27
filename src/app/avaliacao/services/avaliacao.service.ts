@@ -22,4 +22,11 @@ export class AvaliacaoService {
       GlobalConstants.default_headers_routes
     );
   }
+
+   obterDownloadUrlDasDocumentacoes(email: string) {
+    return this.httpClient.get(
+      `${this.apiUrl}/matricula/${email}/documentacoes`,
+      GlobalConstants.default_headers_routes
+    );
+  }
 }
