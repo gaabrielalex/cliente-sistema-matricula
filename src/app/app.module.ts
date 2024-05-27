@@ -19,6 +19,8 @@ import { EditaisModule } from './editais/editais.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { ResetPasswordModule } from './reset-password/reset-password.module';
+import { MatriculasAvaliacaoModule } from './matriculas-avaliacao/matriculas-avaliacao.module';
+import { AvaliacaoModule } from './avaliacao/avaliacao.module';
 
 const NgxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -45,6 +47,8 @@ const NgxUiLoaderConfig: NgxUiLoaderConfig = {
     DefaultLayoutModule,
     UserModule,
     ResetPasswordModule,
+    MatriculasAvaliacaoModule,
+    AvaliacaoModule,
     MaterialModule,
     SignUpModule,
     FormsModule,
