@@ -60,20 +60,6 @@ export class MatriculasAvaliacaoComponent implements OnInit {
   }
 
   handleAvaliarAction(values: any) {
-    // const dialogConifg = new MatDialogConfig();
-    // dialogConifg.data = {
-    //   action: 'Edit',
-    //   data: values
-    // }
-    // dialogConifg.width = '850px';
-    // const dialogRef = this.dialogRef.open(EditaisDialogAddEditComponent, dialogConifg);
-    // this.router.events.subscribe(() => {
-    //   dialogRef.close();
-    // });
-    // const sub = dialogRef.componentInstance.onEditEdital.subscribe(
-    //   (response) => {
-    //     this.tableData();
-    //   }
-    // );
+    this.router.navigate(['matriculas-avaliacao/avaliacao', values.id_matricula]);
   }
 }
