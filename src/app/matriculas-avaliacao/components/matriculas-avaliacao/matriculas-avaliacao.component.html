@@ -1,1 +1,47 @@
-<p>matriculas-avaliacao works!</p>
+
+
+
+<div class="container">
+    <mat-card class="card-add">
+      <b> <span> Matrículas Para Avaliação </span></b>
+      <!-- <button mat-raised-button color="primary" (click)="handleAddAction()">Adicionar Edital</button> -->
+    </mat-card>
+    <mat-card>
+      <mat-form-field appearance="fill" style="width: 100%">
+        <mat-label>Filtrar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+      </mat-form-field>
+    </mat-card>
+    <hr>
+    <div class="responsive_table">
+      <table mat-table [dataSource]="dataSource" class="mt-elevation-z8">
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <td mat-cell *matCellDef="let element" style="text-align: left"> {{ element.nome }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element" style="text-align: left"> {{ element.email }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cpf">
+          <th mat-header-cell *matHeaderCellDef> CPF </th>
+          <td mat-cell *matCellDef="let element" style="text-align: left"> {{ element.cpf }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acoes">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center"> Ações </th>
+          <td mat-cell *matCellDef="let element" class="action-link" style="text-align: center">
+            <button mat-icon-button color="primary" matTooltip="Avaliar" (click)="handleAvaliarAction(element)">
+              <mat-icon>rate_review</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+
