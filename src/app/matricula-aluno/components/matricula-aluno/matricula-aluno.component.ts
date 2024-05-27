@@ -60,7 +60,6 @@ export class MatriculaAlunoComponent implements OnInit {
     })
   }
 
-  //TESTAR
   handledSubmit() {
     var formData = this.matriculaAlunosForm.value;
     if (formData.pdf_docs_matricula == null) {
