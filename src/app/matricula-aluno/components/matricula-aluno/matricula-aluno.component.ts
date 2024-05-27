@@ -95,7 +95,7 @@ export class MatriculaAlunoComponent implements OnInit {
       this.ngxSerivce.stop();
       this.responseMessage = response.success;
 
-      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.success);
+      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.success, 8000);
 
       //Recarrega a página para atualizar o status da matricula
       setTimeout(() => {
@@ -149,7 +149,7 @@ export class MatriculaAlunoComponent implements OnInit {
       this.ngxSerivce.stop();
       this.responseMessage = response.success;
 
-      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.success);
+      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.success, 8000);
 
        //Recarrega a página para atualizar o status da matricula
        setTimeout(() => {
