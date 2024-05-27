@@ -60,6 +60,6 @@ export class MatriculasAvaliacaoComponent implements OnInit {
   }
 
   handleAvaliarAction(values: any) {
-    this.router.navigate(['matriculas-avaliacao/avaliacao', values.id_matricula]);
+    this.router.navigate(['matriculas-avaliacao/avaliacao', values.email]);
   }
 }
