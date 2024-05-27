@@ -7,6 +7,7 @@ import { AuthGuard } from './shared/services/auth-guard/auth-guard.service';
 import { DefaultLayoutComponent } from './default-layout/components/default-layout/default-layout.component';
 import { AdminGuardService } from './shared/services/admin-guard/admin-guard.service';
 import { SignUpComponent } from './sign-up/components/sign-up/sign-up.component';
+import { AvaliadorGuardService } from './shared/services/avaliador-guard.service';
 
 const routes: Routes = [
   {
@@ -44,6 +45,11 @@ const routes: Routes = [
         path: 'matricula-aluno',
         canActivate: [AlunoGuardService],
         loadChildren: () => import('./matricula-aluno/matricula-aluno.module').then(m => m.MatriculaAlunoModule)
+      },
+      {
+        path: 'matriculas-avaliacao',
+        canActivate: [AvaliadorGuardService],
+        loadChildren: () => import('./matriculas-avaliacao/matriculas-avaliacao.module').then(m => m.MatriculasAvaliacaoModule)
       },
       {
         path: '**',
