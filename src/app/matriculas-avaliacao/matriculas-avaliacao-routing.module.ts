@@ -7,7 +7,11 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: MatriculasAvaliacaoComponent
-  }
+  },
+  {
+    path: 'avaliacao',
+    loadChildren: () => import('../avaliacao/avaliacao.module').then(m => m.AvaliacaoModule)
+  },
 ];
 
 @NgModule({

@@ -8,10 +8,6 @@ const routes: Routes = [
     pathMatch: 'full',
     component: AvaliacaoComponent
   },
-  {
-    path: 'avaliacao',
-    loadChildren: () => import('./avaliacao.module').then(m => m.AvaliacaoModule)
-  },
 ];
 
 @NgModule({
