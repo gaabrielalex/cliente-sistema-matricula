@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MatriculasAvaliacaoComponent
   },
   {
-    path: 'avaliacao/:id_matricula',
+    path: 'avaliacao/:email_aluno',
     loadChildren: () => import('../avaliacao/avaliacao.module').then(m => m.AvaliacaoModule)
   },
 ];
