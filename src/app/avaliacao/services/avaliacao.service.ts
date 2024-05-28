@@ -16,6 +16,14 @@ export class AvaliacaoService {
     private router: Router,
   ) { }
 
+  addAvaliacao(data: any) {
+    return this.httpClient.post(
+      `${this.apiUrl}${this.path_route}`,
+      data,
+      GlobalConstants.default_headers_routes
+    );
+  }
+
   getAlunoByEmail(email: string) {
     return this.httpClient.get(
      `${this.apiUrl}/aluno/${email}`,
