@@ -16,9 +16,9 @@ export class AvaliacaoService {
     private router: Router,
   ) { }
 
-  getAlunoByIdMatricula(idMatricula: number){
+  getAlunoByEmail(email: string) {
     return this.httpClient.get(
-     `${this.apiUrl}/matricula/${idMatricula}/aluno`,
+     `${this.apiUrl}/aluno/${email}`,
       GlobalConstants.default_headers_routes
     );
   }
