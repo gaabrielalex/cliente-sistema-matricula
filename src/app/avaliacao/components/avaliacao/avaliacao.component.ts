@@ -143,6 +143,7 @@ export class AvaliacaoComponent implements OnInit {
       this.ngxSerivce.stop();
       this.responseMessage = response.success;
       this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.success);
+      this.router.navigate(['/matriculas-avaliacao']);
     }, (error: any) => {
       if(error.error?.error != null){
         this.responseMessage = error.error.error;
