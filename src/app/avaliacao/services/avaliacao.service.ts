@@ -23,6 +23,13 @@ export class AvaliacaoService {
     );
   }
 
+  getAlunoMatriculaByEmail(email: string) {
+    return this.httpClient.get(
+      `${this.apiUrl}/aluno/${email}/matricula`,
+      GlobalConstants.default_headers_routes
+    );
+  }
+
    obterDownloadUrlDasDocumentacoes(email: string) {
     return this.httpClient.get(
       `${this.apiUrl}/matricula/${email}/documentacoes`,
