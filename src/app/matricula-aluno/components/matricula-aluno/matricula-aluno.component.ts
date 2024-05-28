@@ -23,7 +23,7 @@ export class MatriculaAlunoComponent implements OnInit {
   allowedExtensionsForFile = ['pdf'];
   fileToUpload: File | null = null;
   fileError: string | null = null;
-  comentariosAvalicao: string = 'PorEnquantoTeste';
+  comentariosAvalicao: string = '';
   responseMessage: any;
 
   constructor(
