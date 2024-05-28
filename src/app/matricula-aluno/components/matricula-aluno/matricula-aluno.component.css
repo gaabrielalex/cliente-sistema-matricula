@@ -20,7 +20,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 72vh;
+  /* height: 80vh; */
+  gap: 35px;
+}
+
+.highlight {
+  gap: 10px !important;
 }
 
 .container {
@@ -29,7 +34,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 };
 
 h2 {

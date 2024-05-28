@@ -14,7 +14,7 @@
 <div
   *ngIf="statusMatricula === 'I' || statusMatricula === 'C' || statusMatricula === 'R'">
   <div class="container">
-    <div class="content">
+    <div class="content" [ngClass]="{'highlight': statusMatricula === 'R'}" >
       <h2 style="font-size: 1.5em; font-weight: bold;">
         <span *ngIf="statusMatricula === 'I'">Efetivar Matrícula</span>
         <span *ngIf="statusMatricula === 'C'">Editar Matrícula</span>
