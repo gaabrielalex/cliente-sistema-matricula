@@ -54,4 +54,11 @@ export class MatriculaAlunoService {
     );
   }
 
+  obterUltimaAvaliacao(idMatricula: number) {
+    return this.httpClient.get(
+      this.apiUrl + this.path_route + `/${idMatricula}` + '/ultima-avaliacao',
+      GlobalConstants.default_headers_routes
+    );
+  }
+
 }

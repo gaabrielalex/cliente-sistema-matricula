@@ -19,11 +19,13 @@ export class MatriculaAlunoComponent implements OnInit {
   // R - Matricula Reprovada pelo avaliador responsável(documentações reprovadas)
   //Por padrão a matricula é inexistente
   statusMatricula: String = 'X'
+  dadosMatricula: any;
+  dadosUltimaAvaliacao: any;
+  comentariosAvaliacao: string = "";
   matriculaAlunosForm: any = FormGroup;
   allowedExtensionsForFile = ['pdf'];
   fileToUpload: File | null = null;
   fileError: string | null = null;
-  comentariosAvaliacao: string = '';
   responseMessage: any;
 
   constructor(
@@ -45,9 +47,14 @@ export class MatriculaAlunoComponent implements OnInit {
       if(response.length > 0){
         //Se existir matricula então o status é o status da matricula
         this.statusMatricula = response[0].status;
+        this.dadosMatricula = response[0];
 
         //Linha para forçar o status da matricula para testes
         // this.statusMatricula = 'I';
+
+        //Obtém os dados da última avaliação
+        this.onbterDadosUltimaAvaliacao(this.dadosMatricula.id_matricula);
+
 
       } else {
         //Se não existir matricula então o status é X
@@ -57,6 +64,18 @@ export class MatriculaAlunoComponent implements OnInit {
     },(error) => {
       console.log("O status da matricula foi definido como: " + this.statusMatricula)
       console.log(error);
+    })
+  }
+
+  onbterDadosUltimaAvaliacao(idMatricula: number): void {
+    if(this.statusMatricula !== 'R') {
+      return;
+    }
+    this.matriculaAlunoService.obterUltimaAvaliacao(idMatricula).subscribe((response: any) => {
+      this.dadosUltimaAvaliacao = response.avaliacao;
+      this.comentariosAvaliacao = response.avaliacao.comentarios;
+    },(error) => {
+      this.snackbarService.openSnackBar("Houve um erro ao buscar as informações referentes a avalicação da sua matrícula, tente novamente mais tarde...", GlobalConstants.error);
     })
   }
 
