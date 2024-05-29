@@ -59,3 +59,8 @@ h2 .fas {
   display: flex;
   justify-content: right;
 }
+
+textarea {
+  resize: vertical;
+  font-weight: normal;
+}
