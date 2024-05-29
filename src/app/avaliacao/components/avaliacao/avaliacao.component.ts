@@ -136,7 +136,7 @@ export class AvaliacaoComponent implements OnInit {
       id_matricula: this.dadosMatricula.id_matricula,
       dt_avaliacao: dtAvaliacao,
       status: formData.status,
-      comentarios: formData.comentarios
+      comentarios: formData.comentarios == null ? " " : formData.comentarios
     }
 
     this.avaliacaoService.addAvaliacao(data).subscribe((response: any) => {
