@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Console } from 'console';
-import { tap } from 'rxjs';
+import { lastValueFrom, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -26,9 +26,10 @@ export class AuthenticationService {
     );
   }
 
-  isLoggedIn(){
-    if(localStorage.getItem('Token') != null){
-      return true;
+  async isLoggedIn(): Promise<boolean> {
+    const token = localStorage.getItem('Token');
+    if(token != null){
+      return await this.verificarSeTokenÉVálido();
     }
     return false;
   }
@@ -57,5 +58,25 @@ export class AuthenticationService {
           this.router.navigate(['/login']);
         }
       }));
+  }
+
+  async verificarSeTokenÉVálido(): Promise<boolean> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'x-access-token': localStorage.getItem('Token') ?? ''
+    });
+
+    try {
+      const response: HttpResponse<any> = await lastValueFrom(
+        this.httpClient.post<any>(
+          `${this.apiUrl}/validate-token`,
+          {},
+          { headers, observe: 'response' }
+        )
+      );
+      return response.status !== 401;
+    } catch (error) {
+      return false;
+    }
   }
 }

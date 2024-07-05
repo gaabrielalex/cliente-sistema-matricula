@@ -16,10 +16,10 @@ export class AuthGuard implements CanActivate {
     private snackBarService: SnackbarService
   ) {}
 
-  canActivate(
+  async canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.authenticationService.isLoggedIn()) {
+    state: RouterStateSnapshot): Promise<boolean | UrlTree> {
+    if (await this.authenticationService.isLoggedIn()) {
       return true;
     }
     this.snackBarService.openSnackBar('Você precisa estar autenticado para acessar essa página', GlobalConstants.error);
