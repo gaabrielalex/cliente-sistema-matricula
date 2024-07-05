@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../authentication/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { EditaisService } from '../../services/editais.service';
 import { Router } from '@angular/router';
@@ -24,7 +25,8 @@ export class EditaisComponent implements OnInit {
     private router: Router,
     public dialogRef: MatDialog,
     private ngxSerivce: NgxUiLoaderService,
-    private snackBarService: SnackbarService
+    private snackBarService: SnackbarService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +50,13 @@ export class EditaisComponent implements OnInit {
       } else {
         this.responseMessage = 'Erro ao buscar os editais';
       }
-      this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+      this.authenticationService.verificarSeTokenÉVálido().then((tokenEhValido: any) => {
+        if(tokenEhValido && error.status == 401){
+          window.location.reload();
+        } else {
+          this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+        }
+      });
     })
   }
 
