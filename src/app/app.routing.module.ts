@@ -25,30 +25,32 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'user',
-        canActivate: [AdminGuardService],
+        canActivate: [AdminGuardService, AuthGuard],
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
       },
       {
         path: 'editais',
-        canActivate: [AdminGuardService],
+        canActivate: [AdminGuardService, AuthGuard],
         loadChildren: () => import('./editais/editais.module').then(m => m.EditaisModule)
       },
       {
         path: 'reset-password',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule)
       },
       {
         path: 'matricula-aluno',
-        canActivate: [AlunoGuardService],
+        canActivate: [AlunoGuardService, AuthGuard],
         loadChildren: () => import('./matricula-aluno/matricula-aluno.module').then(m => m.MatriculaAlunoModule)
       },
       {
         path: 'matriculas-avaliacao',
-        canActivate: [AvaliadorGuardService],
+        canActivate: [AvaliadorGuardService, AuthGuard],
         loadChildren: () => import('./matriculas-avaliacao/matriculas-avaliacao.module').then(m => m.MatriculasAvaliacaoModule)
       },
       {

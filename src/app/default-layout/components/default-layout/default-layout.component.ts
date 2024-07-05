@@ -56,6 +56,11 @@ export class DefaultLayoutComponent implements OnInit {
       } else {
         this.responseMessage = GlobalConstants.GenereicErrorMessage;
       }
+      if(error.status === 500){
+        this.snackBarService.openSnackBar("Logout efetuado com sucesso", GlobalConstants.success);
+        this.router.navigate(['/login']);
+        return;
+      }
       this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
     })
   }
