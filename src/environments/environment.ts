@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   favicon: 'favicon.ico',
-  apiUrl: 'https://servidor-sistema-matricula.vercel.app',
+  apiUrl: 'http://localhost:9020',
 };
 
 /*
