@@ -1,27 +1,25 @@
-# ClienteSistemaMatricula
+# Sistema Matrícula (Front-end)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
+Aplicação full‑stack com frontend em **Angular** e backend em **Node.js** (MySQL) para gerenciar de ponta a ponta o processo de matrículas acadêmicas. Permite criar e publicar editais, inscrever candidatos com upload seguro de documentos (PDF/XLSX), controlar usuários e permissões (admin, avaliador, aluno) e conduzir o fluxo de avaliação das inscrições.  
 
-## Development server
+A interface, construída com **Angular Material**, oferece uma experiência responsiva e consistente; o backend expõe APIs REST em **Node.js** e persiste dados no **MySQL**. O **Firebase** é usado exclusivamente como provedor de armazenamento de arquivos (uploads de documentos), enquanto autenticação e persistência de dados ficam sob responsabilidade do backend. A arquitetura modular prioriza testabilidade, manutenção e implantação contínua.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ✨ Funcionalidades Principais
 
-## Code scaffolding
+- 🔐 Autenticação
+- 📝 Cadastro de usuários
+- 📂 Gerenciamento de Editais com upload de planilhas 
+- 🧾 Fluxo de matrícula do aluno com upload de documentos PDF 
+- ✅ Avaliação das matrículas por avaliadores
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🛠️ Tecnologias Utilizadas
 
-## Build
+- Angular — SPA frontend em TypeScript, responsável pela UI, rotas, formulários e comunicação com a API (HttpClient).
+- Angular Material — conjunto de componentes e estilos para construir interfaces responsivas e consistentes.
+- Node.js — runtime do backend que expõe APIs REST para autenticação, gestão de usuários, editais e matrículas.
+- MySQL — banco de dados relacional para persistência das entidades do sistema (usuários, editais, matrículas, avaliações).
+- Firebase (Storage) — usado exclusivamente como provedor de armazenamento em nuvem para arquivos enviados.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Link do projeto back-end
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- https://github.com/gaabrielalex/servidor-sistema-matricula-public-repo
